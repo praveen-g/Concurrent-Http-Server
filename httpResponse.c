@@ -1,7 +1,3 @@
-//
-// Created by yeehanchen on 3/1/17.
-//
-
 #include <string.h>
 #include <stdlib.h>
 #include "httpResponse.h"
@@ -12,13 +8,9 @@
 #include "libgen.h"
 
 
-
-
 #define SERVER_NAME "Liso/1.0"
 #define SP ' '
 #define CRLF '\r\n'
-
-
 
 
 //returns value of specific header
@@ -57,7 +49,6 @@ int parseURI(Request *request, char * local_uri){
 }
 
 
-
 // status 505
 int isRightHTTPVersion(Request * request, Response * response){
 
@@ -71,11 +62,6 @@ int isRightHTTPVersion(Request * request, Response * response){
 
     return 1;
 }
-
-
-
-
-
 
 
 // status 411
@@ -94,9 +80,6 @@ int isContentLength(Request* request, Response *response){
     return 0;
 
 }
-
-
-
 
 
 // status 500
@@ -126,16 +109,6 @@ int isMethodImplemented(int method, Response *response){
 }
 
 
-
-
-
-
-
-
-
-
-
-
 // status 404
 int isValidURI(Request * request, Response * response){
 
@@ -158,8 +131,6 @@ int isValidURI(Request * request, Response * response){
     }
 
 }
-
-
 
 
 // function to get content type
@@ -198,9 +169,6 @@ int getContentType(Request * request, char* type){
 }
 
 
-
-
-
 int setContent(char * uri, Response *response, char* length){
 
     printf("open file \n");
@@ -223,7 +191,6 @@ int setContent(char * uri, Response *response, char* length){
     printf("the file length %s \n",length);
     return 1;
 }
-
 
 
 int getLastModified(Request * request, char* date) {
@@ -263,10 +230,6 @@ int getLastModified(Request * request, char* date) {
 }
 
 
-
-
-
-
 int setConnection(Response * response, char* value){
 
     printf("header count  in connection%d \n", response->general_header_count);
@@ -277,8 +240,6 @@ int setConnection(Response * response, char* value){
 
     return 1;
 }
-
-
 
 
 int setDate(Response * response){
@@ -300,9 +261,6 @@ int setDate(Response * response){
 }
 
 
-
-
-
 int setServer(Response * response){
 
     strcpy(response->response_headers[response->response_header_count].header_name, SERVER);
@@ -311,8 +269,6 @@ int setServer(Response * response){
 
     return 1;
 }
-
-
 
 
 int setContentLength(Response * response, char* value){
@@ -325,8 +281,6 @@ int setContentLength(Response * response, char* value){
 }
 
 
-
-
 int setContentType(Response * response, char* value){
 
     strcpy(response->entity_headers[response->entity_header_count].header_name, CONTENT_TYPE);
@@ -335,8 +289,6 @@ int setContentType(Response * response, char* value){
 
     return 1;
 }
-
-
 
 
 int setLastModified(Response * response, char* value){
@@ -349,20 +301,12 @@ int setLastModified(Response * response, char* value){
 }
 
 
-
-
-
 int setHTTPVersion(Response * response){
 
     strcpy(response->http_version, HTTP_VERSION);
 
     return 1;
 }
-
-
-
-
-
 
 
 // Generate response for request GET
@@ -438,10 +382,6 @@ int respondGET(Request * request, Response *response){
 }
 
 
-
-
-
-
 //Generate respnse for request POST
 int respondPOST(Request * request, Response *response) {
 
@@ -484,12 +424,6 @@ int respondPOST(Request * request, Response *response) {
     }
     return  0;
 }
-
-
-
-
-
-
 
 
 //Generate response for request HEAD
@@ -538,16 +472,8 @@ int respondHEAD(Request * request, Response *response) {
 }
 
 
-
-
-
-
-
-
 //Convert struct response to buffer
 int responseToBuffer(Response * response, char * buffer){
-
-
 
     char status_line[4096];
     char general_headers[4096];
@@ -615,10 +541,6 @@ int responseToBuffer(Response * response, char * buffer){
 }
 
 
-
-
-
-
 // Response handler
 int httpResponse(Request * request, Response* response){
 
@@ -681,11 +603,6 @@ int httpResponse(Request * request, Response* response){
 
 
     }
-
-
-
-
-
 
 
     if(isMethodImplemented(method,response) == 0){

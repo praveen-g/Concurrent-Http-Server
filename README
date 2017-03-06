@@ -1,0 +1,20 @@
+How To run
+==============
+Running the Starter Code should be Fairly Simple
+make
+
+Implementation
+==============
+We've implemented checkpoint 1 with select function. Connection is persistent. Server could accept new connection
+while dealing with requests.
+We've implemented checkpoint 2 and achieve GET, POST and HEAD function HTTP compliant. The server can handle multiple
+status such like 404,500. On 202, the server could process a GET request from browser and retrieve it from its local system.
+The server could also handle some malformed requests, which should receive 500 as return.
+
+
+
+Biggest Problem
+===============
+Memory corruption is our biggest problem which usually happen in concurrent calls. Since the memory of many
+data structure is dynamically allocated, some memory blocks are overlapped or accessed after being released
+when one request come into one anthoer. We tried use fixed memory which make it slightly better. But the problem still happen sometime. We would like to know a better solution.

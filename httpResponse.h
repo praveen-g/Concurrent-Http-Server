@@ -1,16 +1,9 @@
-//
-// Created by yeehanchen on 3/1/17.
-//
-
-
 #include "parse.h"
 
 #ifndef SERVER_HTTPRESPONSE_H
 #define SERVER_HTTPRESPONSE_H
 
 #endif //SERVER_HTTPRESPONSE_H
-
-
 
 
 typedef struct
@@ -57,15 +50,12 @@ typedef struct
 #define STATUS_505  "HTTP VERSION NOT SUPPORTED"
 #define STATUS_405  "METHOD NOT ALLOWED"
 
-
-
 // General headers
 #define CONNECTION "Connection"
 #define DATE "Date"
 
 // Response headers
 #define SERVER "Server"
-
 
 // Entity headers
 #define CONTENT_LENGTH "Content-Length"

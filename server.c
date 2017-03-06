@@ -115,14 +115,7 @@ int main(int argc, char* argv[])
 
     logText(fptr, DATA, "----- Echo Server -----\n", NULL);
 
-
-
-
     fprintf(stdout, "----- Echo Server -----\n");
-
-
-
-
 
     if ((rv = getaddrinfo(NULL, ECHO_PORT, &hints, &ai)) != 0) {
         fprintf(stderr, "selectserver: %s\n", gai_strerror(rv));
@@ -130,7 +123,6 @@ int main(int argc, char* argv[])
 
         return EXIT_FAILURE;
     }
-
 
     for(p = ai; p != NULL; p = p->ai_next){
         listener = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
@@ -249,7 +241,6 @@ int main(int argc, char* argv[])
                 } // END handle data from client
             } // END got new incoming connection
         } // END looping through file descriptors
-
 
     }
     fclose(fptr);

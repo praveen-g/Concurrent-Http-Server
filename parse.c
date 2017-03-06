@@ -49,9 +49,8 @@ Request * parse(char *buffer, int size) {
   //Valid End State
 	if (state == STATE_CRLFCRLF) {
 		Request *request = (Request *) malloc(sizeof(Request));
-    request->header_count=0;
-    //TODO You will need to handle resizing this in parser.y
-    request->headers = (Request_header *) malloc(sizeof(Request_header)*1);
+        request->header_count=0;
+        request->headers = (Request_header *) malloc(sizeof(Request_header)*1);
 		set_parsing_options(buffer, i, request);
 		if (yyparse() == SUCCESS) {
 
@@ -68,7 +67,6 @@ Request * parse(char *buffer, int size) {
         return request;
 		}
 	}
-  //TODO Handle Malformed Requests
     printf("Parsing Failed\n");
 	return NULL;
 
